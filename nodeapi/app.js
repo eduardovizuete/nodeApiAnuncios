@@ -17,6 +17,7 @@ require('./lib/mongoConnection');
 
 //modelos
 require('./models/anuncioSchema');
+require('./models/usuarioSchema');
 
 // prueba modelo guardar anuncio
 //require('./lib/anuncioSave');
@@ -33,12 +34,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use('/', routes);
 app.use('/users', users);
 
 // middleware anuncios sin filtros
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+// middleware crear usuario
+app.use('/apiv1/usuarios', require('./routes/apiv1/usuarios'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
