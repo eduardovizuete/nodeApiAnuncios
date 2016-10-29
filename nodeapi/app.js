@@ -15,8 +15,11 @@ var app = express();
 // conexion mongoose
 require('./lib/mongoConnection');
 
+//modelos
+require('./models/anuncioSchema');
+
 // prueba modelo guardar anuncio
-require('./lib/anuncioSave');
+//require('./lib/anuncioSave');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -66,6 +70,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
