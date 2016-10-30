@@ -22,7 +22,7 @@ var anuncioSchema = mongoose.model('Anuncio');
 var jwtAut = require('../../lib/jwtAuth');
 router.use(jwtAut());
 
-// lista de anuncios paginada, con filtros
+// lista de anuncios paginada, con filtros, totales y sumatorias
 router.get('/', function (req, res, next) {
     var tag = req.query.tag;
     var venta = req.query.venta;
@@ -50,7 +50,7 @@ router.get('/', function (req, res, next) {
     if (typeof precio !== 'undefined' && precio !== '-') {
         if (req.query.precio.indexOf('-') !== -1) {
             filter.precio = {};
-            let rango = precio.split('-');
+            var rango = precio.split('-');
             if (rango[0] !== '') {
                 filter.precio.$gte = rango[0];
             }
@@ -74,7 +74,13 @@ router.get('/', function (req, res, next) {
                         console.error(err);
                     } else {
                         console.log(results);
-                        res.json({success: true, anuncios: anuncios, totales: results});
+                        console.log('NumRegistros: ', anuncios.length);
+                        res.json({
+                            success: true,
+                            anuncios: anuncios,
+                            totales: results,
+                            numdocs:  anuncios.length
+                        });
                     }
                 }
             );
