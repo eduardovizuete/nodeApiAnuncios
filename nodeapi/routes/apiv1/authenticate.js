@@ -10,6 +10,34 @@ var createHash = require('sha.js');
 var jwt = require('jsonwebtoken');
 
 // middleware para autenticar usuario y devolver token
+/**
+ * @api {post} /apiv1/usuarios/authenticate Autenticacion de usuarios
+ * @apiName /apiv1/usuarios/authenticate
+ * @apiGroup nodeAPI
+ *
+ * @apiParam {String} nombre Nombre del usuario.
+ * @apiParam {String} clave Clave del usuario.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} token   Token generado para el usuario.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "success": "true",
+ *       "token": "eyJhbGc..."
+ *     }
+ *
+ * @apiError {String}   success         false.
+ * @apiError {String}   message         USER_NOT_FOUND.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false",
+ *       "message": "USER_NOT_FOUND"
+ *     }
+ */
 router.post('/', function (req, res, err) {
     console.log('Body: ', req.body);
 

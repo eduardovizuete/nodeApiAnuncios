@@ -1,0 +1,11 @@
+{
+  "name": "apidoc-nodeAPI",
+  "version": "1.0.0",
+  "description": "apiDoc nodeApi Practica ME!AN",
+  "title": "apiDoc nodeApi Practica ME!AN",
+  "url": "http://localhost:3000",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}

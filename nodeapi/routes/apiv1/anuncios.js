@@ -22,6 +22,40 @@ var anuncioSchema = mongoose.model('Anuncio');
 var jwtAut = require('../../lib/jwtAuth');
 router.use(jwtAut());
 
+/**
+ * @api {get} /apiv1/anuncios Lista de anuncios paginada, con filtros, totales, sumatorias para usuarios autenticados
+ * @apiName /apiv1/anuncios
+ * @apiGroup nodeAPI
+ *
+ * @apiParam {String} tag Etiqueta del anuncio.
+ * @apiParam {String} venta Tipo del anuncio.
+ * @apiParam {String} nombre Filtro por nombre del anuncio.
+ * @apiParam {String} precio Filtro por precio del anuncio.
+ * @apiParam {String} start Inicio de documentos.
+ * @apiParam {String} limit Limite de registros.
+ * @apiParam {String} sort Filtro para ordenar.
+ * @apiParam {String} includeTotal Filtro para presetar totales.
+ * @apiParam {String} token Token del usuario autenticado.
+ *
+ * @apiSuccess {String} success true.
+ * @apiSuccess {String} anuncios Anuncios filtrados.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "success": "true",
+ *       "anuncios": "lista de anuncios filtrados"
+ *     }
+ *
+ * @apiError {String}   success         false.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "success": "false"
+ *     }
+ */
+
 // lista de anuncios paginada, con filtros, totales y sumatorias
 router.get('/', function (req, res, next) {
     var tag = req.query.tag;
