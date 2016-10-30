@@ -18,6 +18,10 @@ var anuncioSchema = mongoose.model('Anuncio');
     });
 });*/
 
+// habilitar jwt authentication
+var jwtAut = require('../../lib/jwtAuth');
+router.use(jwtAut());
+
 // lista de anuncios paginada, con filtros
 router.get('/', function (req, res, next) {
     var tag = req.query.tag;

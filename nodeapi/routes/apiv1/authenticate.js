@@ -9,6 +9,7 @@ var createHash = require('sha.js');
 // jwt json web token
 var jwt = require('jsonwebtoken');
 
+// middleware para autenticar usuario y devolver token
 router.post('/', function (req, res, err) {
     console.log('Body: ', req.body);
 
