@@ -4,6 +4,10 @@ Api de Anuncios - software que se ejecuta en el servidor dando servicio a una ap
 ##Tecnologias
 MongoDb, Express, Nodejs
 
+##DEVOPS Info
+IP: http://34.193.76.88
+Domain URL: http://www.devops.evizcloud.com
+
 ##Servicios API
 URL de documentacion de la API: http://localhost:3000/
 
